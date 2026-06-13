@@ -11,10 +11,14 @@ public abstract class Card {
 	private int rarity;
 	private String type;
 	
+	private String cardImagePath;
+	
 	public Card(String cardName, int rarity, String type) {
 		this.cardName = cardName;
 		this.rarity = rarity;
 		this.type = type;
+		
+		this.cardImagePath = "./data/images/{defaultImage}.png";
 	}
 	
 
@@ -31,7 +35,13 @@ public abstract class Card {
 	public String getType() {
 		return type;
 	}
-
+	
+	public void setCardImagePath(String filePath) 
+	{
+		this.cardImagePath = filePath;
+	}
+	
+	
 
 	/**Calculate the power of each Card class implementation as a integer.
 	 * If not implemented, return 1 (default)
