@@ -18,7 +18,8 @@ public abstract class Card {
 		this.rarity = rarity;
 		this.type = type;
 		
-		this.cardImagePath = "./data/images/{defaultImage}.png";
+		cardImagePath =  "./data/images/{defaultImage}.png";
+	
 	}
 	
 
@@ -36,6 +37,12 @@ public abstract class Card {
 		return type;
 	}
 	
+    /**
+     * Sets the image path used to display this card.
+     *
+     * @param filePath the path to the card image
+     */
+	
 	public void setCardImagePath(String filePath) 
 	{
 		this.cardImagePath = filePath;
@@ -43,11 +50,13 @@ public abstract class Card {
 	
 	
 
-	/**Calculate the power of each Card class implementation as a integer.
-	 * If not implemented, return 1 (default)
-	 * 
-	 * @return The total power of the class.
-	 */
+    /**
+     * Calculates the power of this card.
+     * Subclasses may override this method to provide
+     * their own power calculation.
+     *
+     * @return the power value of the card; returns 1 by default
+     */
 	
 	public int getPower() 
 	{
