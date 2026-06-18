@@ -12,18 +12,18 @@ public class CardFactory {
      * @param cardName the name of the card
      * @param rarity the rarity value of the card
      * @param type the card type ("Pokemon", "Energy", "Item", or "Supporter")
-     * @param data type-specific card data
+     * @param data the data of the card.
      * @return the created Card object
      */
 	
-	public static Card createCard(String cardName, int rarity, String type, int data[]) {
+	public static Card createCard(String cardName, int rarity, String type, String data[]) {
 		if (type.equals("energy")) return new EnergyCard(cardName, rarity, data[0]);
 		
-		if (type.equals("pokemon")) return new PokemonCard(cardName, rarity, data[0], data[1]);
+		if (type.equals("pokemon")) return new PokemonCard(cardName, rarity, Integer.parseInt(data [0]), Integer.parseInt(data [1]));
 		
-		if (type.equals("item")) return new ItemCard(cardName, rarity, data[0]);
+		if (type.equals("item")) return new ItemCard(cardName, rarity, Integer.parseInt(data [0]));
 		
-		if (type.equals("supporter")) return new SupporterCard(cardName, rarity, data[0]);
+		if (type.equals("supporter")) return new SupporterCard(cardName, rarity, Integer.parseInt(data [0]));
 		
 		return null;
 		
@@ -59,16 +59,16 @@ public class CardFactory {
 		int rarity = Integer.parseInt(p[1]);
 		String type = p[2].toLowerCase();
 		
-		int data[] = new int[2];
+		String[] data = new String[2];
 		
 		if (p.length > 4) 
 		{
-			data[0] = Integer.parseInt(p[3]);
-			data[1] = Integer.parseInt(p[4]);
+			data[0] = p[3];
+			data[1] = p[4];
 		}
 		
 		else {
-			data[0] = Integer.parseInt(p[3]);
+			data[0] = p[3];
 		}
 		
 		return createCard(cardName, rarity, type, data);

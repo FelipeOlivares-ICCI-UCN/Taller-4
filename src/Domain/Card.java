@@ -63,4 +63,12 @@ public abstract class Card {
 		return 1;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Card " + cardName + ", Rarity: " + rarity + ", Type " + type;
+	}
+	
+	
+
 }
