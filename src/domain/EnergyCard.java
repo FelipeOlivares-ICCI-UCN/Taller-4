@@ -1,18 +1,18 @@
 package domain;
 
 public class EnergyCard extends Card {
-	private int numElements;
+	private String element;
 	
     /**
      * Creates a new energy card.
      *
      * @param cardName the name of the card
      * @param rarity the rarity level of the card
-     * @param numElements the number of energy elements provided by this card
+     * @param elemtn the type of energy provided by the card
      */
-	public EnergyCard(String cardName, int rarity, int numElements) {
+	public EnergyCard(String cardName, int rarity, String element) {
 		super(cardName, rarity, "Energy");
-		this.numElements = numElements;
+		this.element = element;
 
 	}
 }
