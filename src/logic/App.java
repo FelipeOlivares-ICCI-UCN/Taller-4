@@ -10,6 +10,7 @@ public class App {
 	public static void main(String[] args) throws FileNotFoundException 
 	{
 		readFile();
+		sys.startMenu();
 	}
 	
     private static void readFile() throws FileNotFoundException
