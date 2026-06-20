@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import domain.Card;
 import domain.CardFactory;
+import gui.Menu;
 
 public class AppSystemImpl implements AppSystem {
 	public static AppSystemImpl s;
@@ -31,6 +32,14 @@ public class AppSystemImpl implements AppSystem {
 			s = new AppSystemImpl();
 		}
 		return s;
+		
+	}
+
+
+	@Override
+	public void startMenu() {
+		Menu menu = new Menu(cardData);
+		menu.start();
 		
 	}
 	
