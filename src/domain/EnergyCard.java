@@ -1,5 +1,7 @@
 package domain;
 
+import visitor.CardVisitor;
+
 public class EnergyCard extends Card {
 	private String element;
 	
@@ -14,5 +16,11 @@ public class EnergyCard extends Card {
 		super(cardName, rarity, "Energy");
 		this.element = element;
 
+	}
+
+	@Override
+	public void accept(CardVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 }

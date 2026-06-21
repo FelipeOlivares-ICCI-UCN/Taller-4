@@ -1,5 +1,7 @@
 package domain;
 
+import visitor.CardVisitor;
+
 public class PokemonCard extends Card {
 	private int damage, energy;
 	
@@ -29,6 +31,13 @@ public class PokemonCard extends Card {
 	@Override
 	public int getPower() {
 		return (damage / energy) * 100;
+	}
+
+
+	@Override
+	public void accept(CardVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 	
 	

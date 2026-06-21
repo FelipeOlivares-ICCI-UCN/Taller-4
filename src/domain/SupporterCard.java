@@ -1,5 +1,7 @@
 package domain;
 
+import visitor.CardVisitor;
+
 public class SupporterCard extends Card {
 	private int effectsByTurn;
 	
@@ -25,6 +27,12 @@ public class SupporterCard extends Card {
 	@Override
 	public int getPower() {
 		return effectsByTurn * 50;
+	}
+
+	@Override
+	public void accept(CardVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

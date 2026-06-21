@@ -1,5 +1,7 @@
 package domain;
 
+import visitor.CardVisitor;
+
 /**Provides the base for all Card objects
  * 
  * @author Felipe Olivares
@@ -21,6 +23,8 @@ public abstract class Card {
 		cardImagePath =  "./data/images/{defaultImage}.png";
 	
 	}
+	
+	public abstract void accept(CardVisitor visitor);
 	
 
 	public String getCardName() {

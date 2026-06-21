@@ -1,5 +1,7 @@
 package domain;
 
+import visitor.CardVisitor;
+
 public class ItemCard extends Card {
 	private int bonus;
 	
@@ -25,6 +27,12 @@ public class ItemCard extends Card {
 	@Override
 	public int getPower() {
 		return bonus * 20;
+	}
+
+
+	@Override
+	public void accept(CardVisitor visitor) {
+		visitor.visit(this);
 	}
 	
 	
