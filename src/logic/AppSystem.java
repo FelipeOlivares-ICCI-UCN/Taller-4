@@ -7,5 +7,6 @@ package logic;
 public interface AppSystem {
 	void loadData(String data);
 	void startMenu();
+	void saveData();
 	
 }
