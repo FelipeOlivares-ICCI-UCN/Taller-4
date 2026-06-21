@@ -11,6 +11,7 @@ import java.io.IOException;
 public class SaveVisitor implements CardVisitor {
 	
 	BufferedWriter writer;
+	boolean isFirstLine = true;
 	
 	public SaveVisitor(BufferedWriter writer) {
 		this.writer = writer;
@@ -52,8 +53,15 @@ public class SaveVisitor implements CardVisitor {
 	
 	public void writeData(String data) {
 		try {
+			if (!isFirstLine) {
+				writer.newLine();
+			}
+			else {
+				isFirstLine = false;
+			}
+			
 			writer.write(data);
-			writer.newLine();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
