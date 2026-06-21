@@ -1,4 +1,10 @@
-package domain;
+package factory;
+
+import domain.Card;
+import domain.EnergyCard;
+import domain.ItemCard;
+import domain.PokemonCard;
+import domain.SupporterCard;
 
 /**
  * Factory class responsible for creating Card objects

@@ -2,7 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import domain.Card;
-import domain.CardFactory;
+import factory.CardFactory;
 import gui.Menu;
 
 public class AppSystemImpl implements AppSystem {

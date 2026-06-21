@@ -11,7 +11,7 @@ public abstract class Card {
 	private int rarity;
 	private String type;
 	
-	private String cardImagePath;
+	private static String cardImagePath;
 	
 	public Card(String cardName, int rarity, String type) {
 		this.cardName = cardName;
