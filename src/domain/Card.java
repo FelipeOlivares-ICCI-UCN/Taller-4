@@ -12,16 +12,11 @@ public abstract class Card {
 	private String cardName;
 	private int rarity;
 	private String type;
-	
-	private static String cardImagePath;
-	
+		
 	public Card(String cardName, int rarity, String type) {
 		this.cardName = cardName;
 		this.rarity = rarity;
-		this.type = type;
-		
-		cardImagePath =  "./data/images/{defaultImage}.png";
-	
+		this.type = type;	
 	}
 	
 	public abstract void accept(CardVisitor visitor);
@@ -39,17 +34,6 @@ public abstract class Card {
 
 	public String getType() {
 		return type;
-	}
-	
-    /**
-     * Sets the image path used to display this card.
-     *
-     * @param filePath the path to the card image
-     */
-	
-	public void setCardImagePath(String filePath) 
-	{
-		this.cardImagePath = filePath;
 	}
 	
 	
