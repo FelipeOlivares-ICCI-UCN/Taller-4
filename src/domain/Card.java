@@ -58,5 +58,14 @@ public abstract class Card {
 	}
 	
 	
+	public String getCardPath() {
+		String imagePath = "./data/" + this.cardName + ".jpeg";
+		
+	    return new java.io.File(imagePath).exists()
+	            ? imagePath
+	            : "./data/defaultImage.jpeg";
+	}
+	
+	
 
 }
