@@ -35,6 +35,9 @@ public class ItemCard extends Card {
 		visitor.visit(this);
 	}
 	
+	public int getBonus() {
+		return this.bonus;
+	}
 	
 
 }

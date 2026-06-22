@@ -35,4 +35,7 @@ public class SupporterCard extends Card {
 		
 	}
 
+	public int getEffectsByTurn() {
+		return this.effectsByTurn;
+	}
 }

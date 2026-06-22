@@ -40,6 +40,13 @@ public class PokemonCard extends Card {
 		
 	}
 	
+	public int getDamage() {
+		return this.damage;
+	}
+	
+	public int getEnergy() {
+		return this.energy;
+	}
 	
 	
 

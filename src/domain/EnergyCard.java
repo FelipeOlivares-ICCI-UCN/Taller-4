@@ -23,4 +23,7 @@ public class EnergyCard extends Card {
 		visitor.visit(this);
 		
 	}
+	
+	public String getElement() {
+		return this.element;	}
 }
