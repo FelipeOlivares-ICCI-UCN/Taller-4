@@ -1,17 +1,23 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import domain.Card;
 
@@ -25,7 +31,7 @@ public class Menu {
 	
 	public void start() {
 		JFrame main = new JFrame("Sistema");
-		main.setSize(600, 800);
+		main.setSize(600, 700);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setResizable(false);
 		
@@ -67,7 +73,11 @@ public class Menu {
 		sortingPanel.add(sortByPower);
 		sortingPanel.add(sortByRarity);
 		
-		JPanel collectionPanel = new JPanel();
+		JPanel collectionPanel = getCardPanel();
+		
+		JScrollPane scrollPane = new JScrollPane(collectionPanel);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -76,11 +86,43 @@ public class Menu {
 		mainPanel.add(Box.createVerticalStrut(20));
 		mainPanel.add(sortingPanel);
 		mainPanel.add(Box.createVerticalStrut(20));
-		mainPanel.add(collectionPanel);
+		mainPanel.add(scrollPane);
 
 		main.add(mainPanel);
+		main.setContentPane(mainPanel);
 		
 		main.setVisible(true);
+	}
+	
+	private File[] getCardImages() {
+		File[] files = new File[collection.size()];
+		
+		int i = 0;
+		for (Card c: collection) {
+			files[i] = new File(c.getCardPath());
+			i++;
+		}
+		
+		return files;
+		
+	}
+	
+	private JPanel getCardPanel() {
+		File[] files = getCardImages();
+		
+	    JPanel cardPanel = new JPanel(new GridLayout(0, 3, 10, 10));
+		
+		for (File file: files) {
+	        ImageIcon icon = new ImageIcon(file.getAbsolutePath());
+
+	        Image scaled = icon.getImage().getScaledInstance(
+	                150, 200, Image.SCALE_SMOOTH);
+
+	        JLabel label = new JLabel(new ImageIcon(scaled));
+	        cardPanel.add(label);
+	    }
+
+	    return cardPanel;
 	}
 
 }
