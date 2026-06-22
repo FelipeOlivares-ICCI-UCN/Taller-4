@@ -35,39 +35,36 @@ public class Menu {
 		
 		JLabel managementSectionTitle = new JLabel("Manage Collection");
 		managementSectionTitle.setFont(new Font("Arial", Font.BOLD, 24));
-		managementSectionTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+		managementSectionTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
 		
 		JPanel managementPanel = new JPanel();
 		managementPanel.setLayout(new BoxLayout(managementPanel, BoxLayout.X_AXIS));
 		managementPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		
-		addCard.setAlignmentX(Component.CENTER_ALIGNMENT);
-		deleteCard.setAlignmentX(Component.CENTER_ALIGNMENT);
-		modifyCard.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
+		managementPanel.add(managementSectionTitle);
+		managementPanel.add(Box.createHorizontalGlue());
 		managementPanel.add(addCard);
-		managementPanel.add(Box.createHorizontalStrut(10));
 		managementPanel.add(deleteCard);
-		managementPanel.add(Box.createHorizontalStrut(10));
 		managementPanel.add(modifyCard);
-		
+				
 		JButton sortByName = new JButton("Sort by Name");
 		JButton sortByPower = new JButton("Sort by Power");		
 		JButton sortByRarity = new JButton("Sort by Rarity");
 		
-		JLabel sortingSectionTitle = new JLabel("SORT COLLECTION BY");
+		JLabel sortingSectionTitle = new JLabel("Sort Collection");
 		sortingSectionTitle.setFont(new Font("Arial", Font.BOLD, 24));
-		sortingSectionTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+		sortingSectionTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
 		JPanel sortingPanel = new JPanel();
 		sortingPanel.setLayout(new BoxLayout(sortingPanel, BoxLayout.X_AXIS));
 		sortingPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
+		
+		sortingPanel.add(sortingSectionTitle);
+		sortingPanel.add(Box.createHorizontalGlue());
 		sortingPanel.add(sortByName);
-		sortingPanel.add(Box.createHorizontalStrut(10));
 		sortingPanel.add(sortByPower);
-		sortingPanel.add(Box.createHorizontalStrut(10));
 		sortingPanel.add(sortByRarity);
 		
 		JPanel collectionPanel = new JPanel();
@@ -75,11 +72,12 @@ public class Menu {
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		
-		mainPanel.add(managementSectionTitle);
 		mainPanel.add(managementPanel);
-		mainPanel.add(collectionPanel);
-		mainPanel.add(sortingSectionTitle);
+		mainPanel.add(Box.createVerticalStrut(20));
 		mainPanel.add(sortingPanel);
+		mainPanel.add(Box.createVerticalStrut(20));
+		mainPanel.add(collectionPanel);
+
 		main.add(mainPanel);
 		
 		main.setVisible(true);
