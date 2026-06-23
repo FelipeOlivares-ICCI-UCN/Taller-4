@@ -73,7 +73,7 @@ public class Menu {
 		sortingPanel.add(sortByPower);
 		sortingPanel.add(sortByRarity);
 		
-		JPanel collectionPanel = getCardPanel();
+		JPanel collectionPanel = createCardPanel();
 		
 		JScrollPane scrollPane = new JScrollPane(collectionPanel);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -107,7 +107,7 @@ public class Menu {
 		
 	}
 	
-	private JPanel getCardPanel() {
+	private JPanel createCardPanel() {
 		File[] files = getCardImages();
 		
 	    JPanel cardPanel = new JPanel(new GridLayout(0, 3, 10, 10));
@@ -124,5 +124,26 @@ public class Menu {
 
 	    return cardPanel;
 	}
+	
+	private void refreshPanel(JPanel panel) {
+		
+	panel.removeAll();
 
+    File[] files = getCardImages();
+
+    panel.setLayout(new GridLayout(0, 3, 10, 10));
+
+    for (File file : files) {
+        ImageIcon icon = new ImageIcon(file.getAbsolutePath());
+
+        Image scaled = icon.getImage().getScaledInstance(
+                150, 200, Image.SCALE_SMOOTH);
+
+        JLabel label = new JLabel(new ImageIcon(scaled));
+        panel.add(label);
+    }
+
+    panel.revalidate();
+    panel.repaint();
+}
 }
