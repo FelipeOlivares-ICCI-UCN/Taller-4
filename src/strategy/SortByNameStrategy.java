@@ -14,7 +14,7 @@ public class SortByNameStrategy  implements SortingStrategy {
 			return;
 		}
 		
-		quickSort(c, 0, c.size());
+		quickSort(c, 0, c.size() - 1);
 		
 	}
 	public static void quickSort(List<Card> c, int low, int high) {
