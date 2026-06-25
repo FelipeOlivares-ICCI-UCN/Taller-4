@@ -90,6 +90,14 @@ public class Menu {
 			sortByName();
 		});
 		
+		sortByPower.addActionListener(e->{
+			sortByPower();
+		});
+		
+		sortByRarity.addActionListener(e->{
+			sortByRarity();
+		});
+		
 		sortingPanel.add(sortingSectionTitle);
 		sortingPanel.add(Box.createHorizontalGlue());
 		sortingPanel.add(sortByName);
@@ -140,6 +148,7 @@ public class Menu {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
 	               editor.createMenu(main, card);
+	               refresh();
 	            }
 	        });
 
