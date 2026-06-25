@@ -47,18 +47,18 @@ public class Menu {
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setResizable(false);
 
-		collectionPanel = buildCollectionPanel(main);
+		collectionPanel = buildCollectionPanel();
 		
-		JPanel managementPanel = createManagementPanel(collectionPanel);
+		JPanel managementPanel = buildManagementPanel();
 		
-		JPanel sortingPanel = createSortingPanel(collectionPanel);
+		JPanel sortingPanel = buildSortingPanel();
 				
 		
-		JScrollPane scrollPane = new JScrollPane(collectionPanel);
+		scrollPane = new JScrollPane(collectionPanel);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		
 		mainPanel.add(managementPanel);
