@@ -39,5 +39,10 @@ public class ItemCard extends Card {
 		return this.bonus;
 	}
 	
+	public void setBonus(int bonus) 
+	{
+		this.bonus = bonus;
+	}
+	
 
 }

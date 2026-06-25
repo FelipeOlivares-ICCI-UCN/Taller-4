@@ -48,6 +48,14 @@ public class PokemonCard extends Card {
 		return this.energy;
 	}
 	
+	public void setEnergy(int energy) 
+	{
+		this.energy = energy;
+	}
+	
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
 	
 
 }

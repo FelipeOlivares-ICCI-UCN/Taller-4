@@ -38,4 +38,9 @@ public class SupporterCard extends Card {
 	public int getEffectsByTurn() {
 		return this.effectsByTurn;
 	}
+	
+	public void setEffectsByTurn(int effectsByTurn) 
+	{
+		this.effectsByTurn = effectsByTurn;
+	}
 }

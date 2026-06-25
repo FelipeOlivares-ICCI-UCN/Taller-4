@@ -26,4 +26,12 @@ public class EnergyCard extends Card {
 	
 	public String getElement() {
 		return this.element;	}
+	
+	public void setElement(String element) 
+	{
+		this.element = element;
+	}
+	
+	
+	
 }

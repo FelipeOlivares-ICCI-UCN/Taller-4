@@ -11,7 +11,7 @@ import visitor.CardVisitor;
 public abstract class Card {
 	private String cardName;
 	private int rarity;
-	private String type;
+	private final String type;
 		
 	public Card(String cardName, int rarity, String type) {
 		this.cardName = cardName;
@@ -65,7 +65,13 @@ public abstract class Card {
 	            ? imagePath
 	            : "./data/defaultImage.jpeg";
 	}
-	
-	
+
+	public void setCardName(String cardName) {
+		this.cardName = cardName;
+	}
+
+	public void setRarity(int rarity) {
+		this.rarity = rarity;
+	}
 
 }
