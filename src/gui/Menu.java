@@ -73,7 +73,7 @@ public class Menu {
 		main.setVisible(true);
 	}
 	
-	private JPanel createSortingPanel(JPanel collectionPanel) {
+	private JPanel buildSortingPanel() {
 		JPanel sortingPanel = new JPanel();
 		sortingPanel.setLayout(new BoxLayout(sortingPanel, BoxLayout.X_AXIS));
 		sortingPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -100,7 +100,7 @@ public class Menu {
 	}
 
 
-	private JPanel createManagementPanel(JPanel collectionPanel) {
+	private JPanel buildManagementPanel() {
 		JPanel managementPanel = new JPanel();
 		managementPanel.setLayout(new BoxLayout(managementPanel, BoxLayout.X_AXIS));
 		managementPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -120,7 +120,7 @@ public class Menu {
 	}
 
 
-	private JPanel buildCollectionPanel(JFrame main) {
+	private JPanel buildCollectionPanel() {
 		
 	    JPanel cardPanel = new JPanel(new GridLayout(0, 3, 10, 10));
 		
@@ -157,18 +157,29 @@ public class Menu {
 		refresh();
 	}
 	
+	private void sortByPower() {
+		
+		SortingStrategy strategy = new SortByPowerStrategy();
+		strategy.sortCollection(collection);
+		refresh();
+	}
+	
+	private void sortByRarity() {
+		SortingStrategy strategy = new SortByRarityStrategy();
+		strategy.sortCollection(collection);
+		refresh();
+	}
+	
 	private void refresh() {
 		
-		main.getContentPane().removeAll();
+		JPanel newCollectionPanel = buildCollectionPanel();
 
-		collectionPanel = buildCollectionPanel(main);
+	    scrollPane.setViewportView(newCollectionPanel);
 
-		JScrollPane scroll = new JScrollPane(collectionPanel);
+	    collectionPanel = newCollectionPanel;
 
-		main.setContentPane(scroll);
-
-		main.revalidate();
-		main.repaint();
+	    main.revalidate();
+	    main.repaint();
 		}
 }
 
