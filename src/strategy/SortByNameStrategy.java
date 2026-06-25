@@ -9,7 +9,7 @@ public class SortByNameStrategy  implements SortingStrategy {
 
 	@Override
 	public void sortCollection(List<Card> c) {
-		if (c.size() <= 1 || c == null) 
+		if (c == null || c.size() <= 1) 
 		{
 			return;
 		}
