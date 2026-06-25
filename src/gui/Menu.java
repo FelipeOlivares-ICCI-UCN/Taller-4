@@ -32,6 +32,8 @@ public class Menu {
 	private List<Card> collection;
 	private JPanel collectionPanel;
 	private JFrame main;
+	private JPanel mainPanel;
+	private JScrollPane scrollPane;
 	
 	
 	public Menu(List<Card> collection) {
