@@ -72,7 +72,7 @@ find src -name "*.java" > sources.txt
 javac -d bin @sources.txt
 java -cp bin logic.App
 ```
-#### Windows (CMD):
+#### Windows (Powershell):
 ```
 cd path/to/Taller-4/
 mkdir bin
@@ -80,6 +80,13 @@ dir /s /b src\*.java > sources.txt
 javac -d bin @sources.txt
 java -cp bin logic.App
 ```
+#### Windows (cmd)
+```
+cd path/to/Taller-4/
+mkdir -p bin
+find src -name "*.java" > sources.txt
+javac -d bin @sources.txt
+java -cp bin logic.App
 ## IMPORTANT:
 Images must be stored in the data/ folder with the same name as the card.
 If no image is found, a default image is used.
