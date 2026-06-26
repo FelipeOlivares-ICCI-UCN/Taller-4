@@ -21,10 +21,10 @@ public class EditorPanelFactory {
      *
      * <p>The mapping between card types and editor panels is:</p>
      * <ul>
-     *   <li>energy → {@link EditorPanelEnergyCard}</li>
-     *   <li>item → {@link EditorPanelItemCard}</li>
-     *   <li>pokemon → {@link EditorPanelPokemonCard}</li>
-     *   <li>supporter → {@link EditorPanelSupporterCard}</li>
+     *   <li>energy -> {@link EditorPanelEnergyCard}</li>
+     *   <li>item -> {@link EditorPanelItemCard}</li>
+     *   <li>pokemon -> {@link EditorPanelPokemonCard}</li>
+     *   <li>supporter -> {@link EditorPanelSupporterCard}</li>
      * </ul>
      *
      * @param c the card used to determine the editor panel type

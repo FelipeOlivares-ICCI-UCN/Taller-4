@@ -48,10 +48,10 @@ public class CardFactory {
 	 *
 	 * where the third field specifies the card type:
 	 * <ul>
-	 *   <li>pokemon → Name;Rarity;pokemon;Damage;Energy</li>
-	 *   <li>energy → Name;Rarity;energy;EnergyValue</li>
-	 *   <li>item → Name;Rarity;item;Bonus</li>
-	 *   <li>supporter → Name;Rarity;supporter;EffectValue</li>
+	 *   <li>pokemon -> Name;Rarity;pokemon;Damage;Energy</li>
+	 *   <li>energy -> Name;Rarity;energy;EnergyValue</li>
+	 *   <li>item -> Name;Rarity;item;Bonus</li>
+	 *   <li>supporter -> Name;Rarity;supporter;EffectValue</li>
 	 * </ul>
 	 *
 	 * @param dataLine the semicolon-separated card data
