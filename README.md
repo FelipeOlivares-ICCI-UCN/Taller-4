@@ -1,4 +1,4 @@
-# Magician Manager
+# CARD COLLECTION MANAGER
 Simple GUI software for the management/analysis of a pokemon card collection. 
 Supports 4 types of cards:
 - Pokémon cards
