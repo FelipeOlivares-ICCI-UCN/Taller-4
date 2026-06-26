@@ -17,7 +17,9 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
-	public void createMenu(JFrame main, PokemonCard c) {
+	@Override
+	public boolean buildEditorMenu(JFrame main, PokemonCard c) {
+		final boolean[] wasDataSaved = {false};
 	    JDialog dialogRegister = new JDialog(main, "Edit Pokemon card information", true);
 	    dialogRegister.setSize(350, 300);
 	    dialogRegister.setLocationRelativeTo(main);
@@ -54,7 +56,9 @@ public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
 	    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
+	    JButton cancelButton = new JButton("Cancel");
 	    buttonPanel.add(registerBotton);
+	    buttonPanel.add(cancelButton);
 	    buttonPanel.add(cleanButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
@@ -85,6 +89,7 @@ public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
 	                    "Sucess", 
 	                    JOptionPane.INFORMATION_MESSAGE);
 	                
+	                wasDataSaved[0] = true;
 	                dialogRegister.dispose();
 	                
 	            } catch (NumberFormatException ex) {
@@ -108,8 +113,16 @@ public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
         	damage.setText(String.valueOf(c.getDamage()));
 		});
         
+        cancelButton.addActionListener(e -> {
+        	
+        	dialogRegister.dispose();
+
+        });
+        
         
         dialogRegister.setVisible(true);
+        
+        return wasDataSaved[0];
 	}
 
 }

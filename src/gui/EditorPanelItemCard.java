@@ -19,7 +19,9 @@ import java.awt.FlowLayout;
 
 public class EditorPanelItemCard implements EditorPanel<ItemCard> {
 	@Override
-	public void createMenu(JFrame main, ItemCard c) {
+	public boolean buildEditorMenu(JFrame main, ItemCard c) {
+		final boolean[] wasDataSaved = {false}; 
+		
 	    JDialog dialogRegister = new JDialog(main, "Edit information", true);
 	    dialogRegister.setSize(350, 300);
 	    dialogRegister.setLocationRelativeTo(main);
@@ -50,8 +52,10 @@ public class EditorPanelItemCard implements EditorPanel<ItemCard> {
 	    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
+	    JButton cancelButton = new JButton("Cancel");
 	    buttonPanel.add(registerBotton);
 	    buttonPanel.add(cleanButton);
+	    buttonPanel.add(cancelButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
 	    dialogRegister.add(questionaryPanel, BorderLayout.CENTER);
@@ -76,7 +80,8 @@ public class EditorPanelItemCard implements EditorPanel<ItemCard> {
 	                    "Information succefully edited", 
 	                    "Sucess", 
 	                    JOptionPane.INFORMATION_MESSAGE);
-	                
+	                	
+	                wasDataSaved[0] = true;
 	                dialogRegister.dispose();
 	                
 	            } catch (NumberFormatException ex) {
@@ -99,8 +104,16 @@ public class EditorPanelItemCard implements EditorPanel<ItemCard> {
         	rarity.setText(String.valueOf(c.getRarity()));
 		});
         
+        cancelButton.addActionListener(e -> {
+        	
+        	dialogRegister.dispose();
+
+        });
+        
         
         dialogRegister.setVisible(true);
+        
+        return wasDataSaved[0];
 	}
 
 }

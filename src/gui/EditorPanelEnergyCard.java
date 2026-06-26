@@ -18,7 +18,11 @@ import java.awt.FlowLayout;
 
 public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	@Override
-	public void createMenu(JFrame main, EnergyCard c) {
+	public boolean buildEditorMenu(JFrame main, EnergyCard c) {
+		
+		
+		final boolean[] wasDataSaved = {false}; 
+		
 	    JDialog dialogRegister = new JDialog(main, "Edit information", true);
 	    dialogRegister.setSize(350, 300);
 	    dialogRegister.setLocationRelativeTo(main);
@@ -39,9 +43,7 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
     	element.setText(c.getElement());
     	rarity.setText(String.valueOf(c.getRarity()));
 
-	    
-	    // Agregar componentes al panel
-	    questionaryPanel.add(labelName);
+	   	questionaryPanel.add(labelName);
 	    questionaryPanel.add(name);
 	    questionaryPanel.add(labelRarity);
 	    questionaryPanel.add(rarity);
@@ -51,8 +53,10 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
+	    JButton cancelButton = new JButton("Cancel");
 	    buttonPanel.add(registerBotton);
 	    buttonPanel.add(cleanButton);
+	    buttonPanel.add(cancelButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
 	    dialogRegister.add(questionaryPanel, BorderLayout.CENTER);
@@ -70,6 +74,8 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	                c.setCardName(name.getText());
 	                c.setRarity(rarityNum);
 	                c.setElement(element.getText());
+	                	                
+	                wasDataSaved[0] = true;
 	                
 	                	                
 	                JOptionPane.showMessageDialog(dialogRegister, 
@@ -77,12 +83,13 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	                    "Sucess", 
 	                    JOptionPane.INFORMATION_MESSAGE);
 	                
+	                
 	                dialogRegister.dispose();
 	                
 	            } catch (NumberFormatException ex) {
 	                JOptionPane.showMessageDialog(dialogRegister, 
 	                    "Error: Some of the information was not able to be parsed", 
-	                    "PArsing Error", 
+	                    "Parsing Error", 
 	                    JOptionPane.ERROR_MESSAGE);
 	            }
 	        } else {
@@ -100,8 +107,15 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 
 		});
         
+        cancelButton.addActionListener(e -> {
+        	
+        	dialogRegister.dispose();
+
+}		);
+        
         
         dialogRegister.setVisible(true);
+        return wasDataSaved[0];
 	}
 
 }
