@@ -43,7 +43,7 @@ src/
 
 data/                # Persistent storage
     ├── Sobres.txt      # Saved card data
-    └── defaultImage.jpeg # Default image of the card. ** MUST NOT DELETE, BUT CAN BE REPLACED **
+    └── defaultImage.jpeg # Default image of the card. **MUST NOT DELETE, BUT CAN BE REPLACED**
 
 required/  # Extra stuff required for the asignement 
     ├── Domain Model.pdf
