@@ -11,7 +11,6 @@ public class App {
 	{
 		readFile();
 		sys.startMenu();
-		sys.saveData();
 	}
 	
     private static void readFile() throws FileNotFoundException
