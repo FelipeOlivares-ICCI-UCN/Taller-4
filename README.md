@@ -72,11 +72,11 @@ find src -name "*.java" > sources.txt
 javac -d bin @sources.txt
 java -cp bin logic.App
 ```
-#### Windows (Powershell):
+#### Windows (cmd):
 ```
 cd path/to/Taller-4/
-mkdir bin
-dir /s /b src\*.java > sources.txt
+mkdir -p bin
+find src -name "*.java" > sources.txt
 javac -d bin @sources.txt
 java -cp bin logic.App
 ```
