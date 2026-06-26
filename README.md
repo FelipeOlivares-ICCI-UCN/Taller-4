@@ -85,6 +85,6 @@ javac -d bin -sourcepath src src\logic\App.java
 java -cp bin logic.App
 ```
 ## IMPORTANT:
-Images must be stored in the data/ folder with the same name as the card.
-If no image is found, a default image is used.
-DefaultImage.jpeg **MUST NOT BE DELETED, ALTHOUGH IT CAN BE REPLACED.**
+Images must be stored in the data/ folder with the same name as the card. If no image is found, a default image is used. 
+
+DefaultImage.jpeg **SHOULD NOT BE DELETED**, althought it can be replaced
