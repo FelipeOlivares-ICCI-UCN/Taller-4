@@ -36,14 +36,19 @@ src/
 │   ├── CardVisitor
 │   └── SaveVisitor
 │
-├── logic/               # Application control layer
-│   ├── App
-│   ├── AppSystem
-│   └── AppSystemImpl
-│
-└── data/                # Persistent storage
+└── logic/               # Application control layer
+    ├── App
+    ├── AppSystem
+    └── AppSystemImpl
+---
+data/                # Persistent storage
     ├── Sobres.txt      # Saved card data
-    └── images/         # Card images
+    └── defaultImage.jpeg # Default image of the card. **MUST NOT DELETE, BUT CAN BE REPLACED*/
+---
+required/  # Extra stuff required for the asignement 
+    ├── Domain Model.pdf
+    └── Class Diagram.pdf
+
 ```
 ## How to Run:
 
