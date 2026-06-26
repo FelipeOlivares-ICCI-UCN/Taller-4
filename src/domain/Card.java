@@ -1,5 +1,7 @@
 package domain;
 
+import java.io.File;
+
 import visitor.CardVisitor;
 
 /**Provides the base for all Card objects
@@ -59,11 +61,16 @@ public abstract class Card {
 	
 	
 	public String getCardPath() {
-		String imagePath = "./data/" + this.cardName + ".jpeg";
-		
-	    return new java.io.File(imagePath).exists()
-	            ? imagePath
-	            : "./data/defaultImage.jpeg";
+
+	    String imagePath = "./data/" + cardName + ".jpeg";
+
+	    File file = new File(imagePath);
+
+	    if (file.exists()) {
+	        return imagePath;
+	    }
+
+	    return "./data/defaultImage.jpeg";
 	}
 
 	public void setCardName(String cardName) {
