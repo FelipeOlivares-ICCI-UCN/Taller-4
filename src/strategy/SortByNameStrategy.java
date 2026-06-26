@@ -6,7 +6,13 @@ import domain.Card;
 
 
 public class SortByNameStrategy  implements SortingStrategy {
-
+	/* Sorts the given list of cards by name using the quicksort algorithm.
+    *
+    * <p>This method modifies the input list in-place. If the list is
+    * {@code null} or contains one or fewer elements, it does nothing.</p>
+    *
+    * @param c the list of cards to be sorted (sorted in-place)
+    */
 	@Override
 	public void sortCollection(List<Card> c) {
 		if (c == null || c.size() <= 1) 

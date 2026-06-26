@@ -16,11 +16,21 @@ import domain.EnergyCard;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+/**
+ * GUI editor for {@link EnergyCard} objects.
+ */
 public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	@Override
 	public boolean buildEditorMenu(JFrame main, EnergyCard c) {
 		
-		
+
+		/**
+	     * Opens a dialog to edit an {@link EnergyCard}.
+	     *
+	     * @param main parent window
+	     * @param c the energy card to edit
+	     * @return true if changes were saved, false otherwise
+	     */
 		final boolean[] wasDataSaved = {false}; 
 		
 	    JDialog dialogRegister = new JDialog(main, "Edit information", true);

@@ -7,19 +7,19 @@ import domain.PokemonCard;
 import domain.SupporterCard;
 
 /**
- * Factory class responsible for creating Card objects
+ * Factory class responsible for creating {@link Card} objects
  * from provided parameters or formatted text lines.
  */
 
 public class CardFactory {
-    /**
+	/**
      * Creates a card of the specified type.
      *
      * @param cardName the name of the card
-     * @param rarity the rarity value of the card
-     * @param type the card type ("Pokemon", "Energy", "Item", or "Supporter")
-     * @param data the data of the card.
-     * @return the created Card object
+     * @param rarity the rarity level of the card
+     * @param type the card type ("pokemon", "energy", "item", or "supporter")
+     * @param data the type-specific data required to create the card
+     * @return the created card, or {@code null} if the type is not recognized
      */
 	
 	public static Card createCard(String cardName, int rarity, String type, String data[]) {
@@ -38,7 +38,7 @@ public class CardFactory {
 	
 
 	/**
-	 * Creates a Card object from a semicolon-separated data line.
+	 * Creates a {@link Card} object from a semicolon-separated data line.
 	 *
 	 * The data line must follow the format:
 	 *
@@ -55,8 +55,10 @@ public class CardFactory {
 	 * </ul>
 	 *
 	 * @param dataLine the semicolon-separated card data
-	 * @return the Card object created from the supplied data
-	 */
+     * @return the created card, or {@code null} if the card type is not recognized
+     * @throws NumberFormatException if a numeric field cannot be parsed
+     * @throws ArrayIndexOutOfBoundsException if the input line is incomplete
+     */
 	public static Card createFromLine(String dataLine) 
 	{
 		String[] p = dataLine.split(";");

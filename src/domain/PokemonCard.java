@@ -2,6 +2,13 @@ package domain;
 
 import visitor.CardVisitor;
 
+/**
+ * Represents a Pokémon card.
+ * A Pokémon card has a damage value and an energy cost that determine its power.
+ *
+ * @author Felipe Olivares
+ */
+
 public class PokemonCard extends Card {
 	private int damage, energy;
 	
@@ -23,36 +30,63 @@ public class PokemonCard extends Card {
     /**
      * Calculates the power of this Pokémon card.
      * The power is determined by the ratio of damage to
-     * energy cost, multiplied by 100.
+     * energy cost, multiplied by {@code 100}.
      *
      * @return the calculated power value
      */
 
 	@Override
 	public int getPower() {
-		return (damage / energy) * 100;
+		if (energy == 0) return 0;
+		
+		return damage * 100 / energy;
 	}
 
 
+	/**
+     * Accepts a visitor that performs an operation on this card.
+     *
+     * @param visitor the visitor to accept
+     */
 	@Override
 	public void accept(CardVisitor visitor) {
 		visitor.visit(this);
 		
 	}
 	
+    /**
+     * Returns the damage dealt by this Pokémon.
+     *
+     * @return the damage value
+     */
 	public int getDamage() {
-		return this.damage;
+		return damage;
 	}
 	
+	/**
+     * Returns the energy required to use this Pokémon's attack.
+     *
+     * @return the energy cost
+     */
 	public int getEnergy() {
-		return this.energy;
+		return energy;
 	}
 	
+	/**
+     * Sets the energy required to use this Pokémon's attack.
+     *
+     * @param energy the new energy cost
+     */
 	public void setEnergy(int energy) 
 	{
 		this.energy = energy;
 	}
 	
+	/**
+     * Sets the damage dealt by this Pokémon.
+     *
+     * @param damage the new damage value
+     */
 	public void setDamage(int damage) {
 		this.damage = damage;
 	}

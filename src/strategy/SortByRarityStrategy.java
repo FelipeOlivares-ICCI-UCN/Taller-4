@@ -6,6 +6,13 @@ import domain.Card;
 
 
 public class SortByRarityStrategy  implements SortingStrategy {
+    /* Sorts the given list of cards by rarity using the quicksort algorithm.
+    *
+    * <p>This method modifies the input list in-place. If the list is
+    * {@code null} or contains one or fewer elements, it does nothing.</p>
+    *
+    * @param c the list of cards to be sorted (sorted in-place)
+    */
 
 	@Override
 	public void sortCollection(List<Card> c) {

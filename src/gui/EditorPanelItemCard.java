@@ -16,8 +16,17 @@ import domain.ItemCard;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
+/**
+ * GUI editor for {@link ItemCard} objects.
+ */
 public class EditorPanelItemCard implements EditorPanel<ItemCard> {
+	/**
+     * Opens a dialog to edit a {@link ItemCard}.
+     *
+     * @param main parent window
+     * @param c the item card to edit
+     * @return true if changes were saved, false otherwise
+     */
 	@Override
 	public boolean buildEditorMenu(JFrame main, ItemCard c) {
 		final boolean[] wasDataSaved = {false}; 
@@ -87,7 +96,7 @@ public class EditorPanelItemCard implements EditorPanel<ItemCard> {
 	            } catch (NumberFormatException ex) {
 	                JOptionPane.showMessageDialog(dialogRegister, 
 	                    "Error: Some of the information was not able to be parsed", 
-	                    "PArsing Error", 
+	                    "Parsing Error", 
 	                    JOptionPane.ERROR_MESSAGE);
 	            }
 	        } else {

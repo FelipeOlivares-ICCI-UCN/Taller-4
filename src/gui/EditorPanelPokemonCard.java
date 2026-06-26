@@ -11,12 +11,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import domain.ItemCard;
 import domain.PokemonCard;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-
+/**
+ * GUI editor for {@link PokemonCard} objects.
+ */
 public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
+	/**
+     * Opens a dialog to edit a {@link PokemonCard}.
+     *
+     * @param main parent window
+     * @param c the pokemon card to edit
+     * @return true if changes were saved, false otherwise
+     */
 	@Override
 	public boolean buildEditorMenu(JFrame main, PokemonCard c) {
 		final boolean[] wasDataSaved = {false};

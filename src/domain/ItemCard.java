@@ -2,6 +2,13 @@ package domain;
 
 import visitor.CardVisitor;
 
+/**
+ * Represents an item card.
+ * An item card provides a bonus value that determines its power.
+ *
+ * @author Felipe Olivares
+ */
+
 public class ItemCard extends Card {
 	private int bonus;
 	
@@ -22,7 +29,7 @@ public class ItemCard extends Card {
     /**
      * Calculates the power of this item card.
      *
-     * @return the bonus multiplied by 20
+     * @return the bonus multiplied by {@code 20}
      */
 	@Override
 	public int getPower() {
@@ -30,15 +37,32 @@ public class ItemCard extends Card {
 	}
 
 
+	/**
+     * Accepts a visitor that performs an operation on this card.
+     *
+     * @param visitor the visitor to accept
+     */
 	@Override
 	public void accept(CardVisitor visitor) {
 		visitor.visit(this);
 	}
 	
+    /**
+     * Returns the bonus value of this item.
+     *
+     * @return the item's bonus value
+     */
 	public int getBonus() {
-		return this.bonus;
+		return bonus;
 	}
 	
+
+
+    /**
+     * Sets the bonus value of this item.
+     *
+     * @param bonus the new bonus value
+     */
 	public void setBonus(int bonus) 
 	{
 		this.bonus = bonus;

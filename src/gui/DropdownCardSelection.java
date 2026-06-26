@@ -4,6 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import domain.*;
+
+/**
+ * Utility class responsible for letting the user select
+ * the type of card to create.
+ */
 public class DropdownCardSelection {
 	public Card createCardMenu(JFrame main) {
 	

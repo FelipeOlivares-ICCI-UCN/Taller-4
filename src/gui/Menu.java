@@ -29,6 +29,10 @@ import logic.AppSystemImpl;
 import strategy.*;
 import visitor.SaveVisitor;
 
+/**
+ * Main GUI menu for managing a card collection.
+ * Handles displaying, sorting, adding, and editing cards.
+ */
 public class Menu {
 	private List<Card> collection;
 	private JPanel collectionPanel;
@@ -36,16 +40,21 @@ public class Menu {
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 	
-	
+    /**
+     * Creates a menu tied to a given card collection.
+     *
+     * @param collection list of cards to display and manage
+     */
 	public Menu(List<Card> collection) {
 		this.collection = collection;
 	}
 	
-	
+	/**
+     * Starts and displays the main application window.
+     */
 	public void start() {
 		main = new JFrame("COLLECTION");
 		main.setSize(600, 700);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setResizable(false);
 		
 		main.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -178,14 +187,13 @@ public class Menu {
 	        label.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
+	            	if (editor == null) return;
 	               boolean wasSaved = editor.buildEditorMenu(main, card);
 	               
 	               if (wasSaved) {
-	            	    collection.add(card);
 	            	    refresh();
 	            	}
 	               
-	               refresh();
 	            }
 	        });
 
