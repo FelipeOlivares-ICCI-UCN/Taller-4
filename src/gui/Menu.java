@@ -1,32 +1,33 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
 import domain.Card;
 import factory.EditorPanelFactory;
+import logic.AppSystemImpl;
 import strategy.*;
+import visitor.SaveVisitor;
 
 public class Menu {
 	private List<Card> collection;
@@ -42,10 +43,20 @@ public class Menu {
 	
 	
 	public void start() {
-		main = new JFrame("Sistema");
+		main = new JFrame("COLLECTION");
 		main.setSize(600, 700);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setResizable(false);
+		
+		main.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+		main.addWindowListener(new WindowAdapter() {
+		@Override
+		public void windowClosing(WindowEvent e) {
+		AppSystemImpl.getInstance().saveData();
+		main.dispose();
+		}
+		});
 
 		collectionPanel = buildCollectionPanel();
 		
@@ -71,6 +82,7 @@ public class Menu {
 		main.setContentPane(mainPanel);
 		
 		main.setVisible(true);
+		return;
 	}
 	
 	private JPanel buildSortingPanel() {
@@ -123,6 +135,26 @@ public class Menu {
 		managementPanel.add(Box.createHorizontalGlue());
 		managementPanel.add(addCard);
 		
+		addCard.addActionListener(e->{
+			DropdownCardSelection selector = new DropdownCardSelection();
+			
+			
+			Card newCard = selector.createCardMenu(main);
+			
+			if (newCard != null) 
+			{
+				EditorPanel editor = EditorPanelFactory.getEditorPanel(newCard);
+				
+				boolean wasSaved = editor.buildEditorMenu(main, newCard);
+				
+				if (wasSaved) {
+				collection.add(newCard);
+				refresh();
+				}
+			}
+			
+		});
+		
 		
 		return managementPanel;
 	}
@@ -143,11 +175,16 @@ public class Menu {
 	        
 	        EditorPanel editor = EditorPanelFactory.getEditorPanel(card);
 	        
-	        
 	        label.addMouseListener(new MouseAdapter() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {
-	               editor.createMenu(main, card);
+	               boolean wasSaved = editor.buildEditorMenu(main, card);
+	               
+	               if (wasSaved) {
+	            	    collection.add(card);
+	            	    refresh();
+	            	}
+	               
 	               refresh();
 	            }
 	        });
@@ -190,5 +227,7 @@ public class Menu {
 	    main.revalidate();
 	    main.repaint();
 		}
+	
 }
+
 
