@@ -20,8 +20,8 @@ public class SortByNameStrategy  implements SortingStrategy {
 	public static void quickSort(List<Card> c, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(c, low, high);
-            quickSort(c, low, pivotIndex - 1);  // Sort left half
-            quickSort(c, pivotIndex + 1, high); // Sort right half
+            quickSort(c, low, pivotIndex - 1);  
+            quickSort(c, pivotIndex + 1, high); 
         }
     }
 
