@@ -67,9 +67,11 @@ public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
 	    JButton cancelButton = new JButton("Cancel");
+	    JButton deleteButton = new JButton("Delete");
 	    buttonPanel.add(registerBotton);
 	    buttonPanel.add(cancelButton);
 	    buttonPanel.add(cleanButton);
+	    buttonPanel.add(deleteButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
 	    dialogRegister.add(questionaryPanel, BorderLayout.CENTER);
@@ -129,6 +131,11 @@ public class EditorPanelPokemonCard implements EditorPanel<PokemonCard> {
 
         });
         
+        deleteButton.addActionListener(e -> {
+        	c.markAsDeleted();
+        	dialogRegister.dispose();
+
+}		);
         
         dialogRegister.setVisible(true);
         

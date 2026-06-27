@@ -21,7 +21,7 @@ public class EditorPanelSupporterCard implements EditorPanel<SupporterCard> {
 	@Override
 	public boolean buildEditorMenu(JFrame main, SupporterCard c) {
 		final boolean[] wasDataSaved = {false};
-	    JDialog dialogRegister = new JDialog(main, "Edit information", true);
+	    JDialog dialogRegister = new JDialog(main, "Edit Supporter Card information", true);
 	    dialogRegister.setSize(350, 300);
 	    dialogRegister.setLocationRelativeTo(main);
 
@@ -52,9 +52,11 @@ public class EditorPanelSupporterCard implements EditorPanel<SupporterCard> {
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
 	    JButton cancelButton = new JButton("Cancel");
+	    JButton deleteButton = new JButton("Delete");
 	    buttonPanel.add(registerBotton);
 	    buttonPanel.add(cleanButton);
 	    buttonPanel.add(cancelButton);
+	    buttonPanel.add(deleteButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
 	    dialogRegister.add(questionaryPanel, BorderLayout.CENTER);
@@ -109,6 +111,12 @@ public class EditorPanelSupporterCard implements EditorPanel<SupporterCard> {
         	dialogRegister.dispose();
 
         });
+        
+        deleteButton.addActionListener(e -> {
+        	c.markAsDeleted();
+        	dialogRegister.dispose();
+
+}		);
         
         dialogRegister.setVisible(true);
         return wasDataSaved[0];

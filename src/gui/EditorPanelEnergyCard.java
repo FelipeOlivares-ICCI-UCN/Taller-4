@@ -33,7 +33,7 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	     */
 		final boolean[] wasDataSaved = {false}; 
 		
-	    JDialog dialogRegister = new JDialog(main, "Edit information", true);
+	    JDialog dialogRegister = new JDialog(main, "Edit Energy Card information", true);
 	    dialogRegister.setSize(350, 300);
 	    dialogRegister.setLocationRelativeTo(main);
 
@@ -64,9 +64,12 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
 	    JButton registerBotton = new JButton("Register");
 	    JButton cleanButton = new JButton("Clean");
 	    JButton cancelButton = new JButton("Cancel");
+	    JButton deleteButton = new JButton("Delete");
+	    
 	    buttonPanel.add(registerBotton);
 	    buttonPanel.add(cleanButton);
 	    buttonPanel.add(cancelButton);
+	    buttonPanel.add(deleteButton);
 	    
 	    dialogRegister.setLayout(new BorderLayout());
 	    dialogRegister.add(questionaryPanel, BorderLayout.CENTER);
@@ -122,6 +125,13 @@ public class EditorPanelEnergyCard implements EditorPanel<EnergyCard>{
         	dialogRegister.dispose();
 
 }		);
+        
+        deleteButton.addActionListener(e -> {
+        	c.markAsDeleted();
+        	dialogRegister.dispose();
+
+}		);
+        
         
         
         dialogRegister.setVisible(true);
