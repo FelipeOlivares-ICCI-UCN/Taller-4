@@ -13,6 +13,7 @@ public abstract class Card {
 	private String cardName;
 	private int rarity;
 	private final String type;
+	private boolean isDeleted;
 
     /**
      * Creates a new card.
@@ -26,6 +27,7 @@ public abstract class Card {
 		this.cardName = cardName;
 		this.rarity = rarity;
 		this.type = type;	
+		isDeleted = false;
 	}
 	
     /**
@@ -128,6 +130,25 @@ public abstract class Card {
      */
 	public void setRarity(int rarity) {
 		this.rarity = rarity;
+	}
+	
+	/**
+	 * Marks this card as deleted.
+	 */
+	public void markAsDeleted() 
+	{
+		isDeleted = true;
+	}
+	
+	/**
+	 * Returns whether this card has been marked for deletion.
+	 *
+	 * @return {@code true} if the card has been marked for deletion;
+	 *         {@code false} otherwise
+	 */
+	public boolean isDeleted() 
+	{
+		return this.isDeleted;
 	}
 
 }
