@@ -190,9 +190,14 @@ public class Menu {
 	            	if (editor == null) return;
 	               boolean wasSaved = editor.buildEditorMenu(main, card);
 	               
-	               if (wasSaved) {
-	            	    refresh();
-	            	}
+	               if (card.isDeleted()) 
+	               {
+	            	   refresh();
+	               }
+	               else if (wasSaved) 
+	               {
+	            	   refresh();
+	               }
 	               
 	            }
 	        });
@@ -225,7 +230,8 @@ public class Menu {
 	}
 	
 	private void refresh() {
-		
+
+		collection.removeIf(Card::isDeleted);
 		JPanel newCollectionPanel = buildCollectionPanel();
 
 	    scrollPane.setViewportView(newCollectionPanel);
