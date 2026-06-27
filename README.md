@@ -1,4 +1,4 @@
-# Magician Manager
+# CARD COLLECTION MANAGER
 Simple GUI software for the management/analysis of a pokemon card collection. 
 Supports 4 types of cards:
 - Pokémon cards
@@ -36,14 +36,19 @@ src/
 │   ├── CardVisitor
 │   └── SaveVisitor
 │
-├── logic/               # Application control layer
-│   ├── App
-│   ├── AppSystem
-│   └── AppSystemImpl
-│
-└── data/                # Persistent storage
+└── logic/               # Application control layer
+    ├── App
+    ├── AppSystem
+    └── AppSystemImpl
+
+data/                # Persistent storage
     ├── Sobres.txt      # Saved card data
-    └── images/         # Card images
+    └── defaultImage.jpeg # Default image of the card. 
+
+required/  # Extra stuff required for the asignement 
+    ├── Domain Model.pdf
+    └── Class Diagram.pdf
+
 ```
 ## How to Run:
 
@@ -80,5 +85,6 @@ javac -d bin -sourcepath src src\logic\App.java
 java -cp bin logic.App
 ```
 ## IMPORTANT:
-Images must be stored in the data/ folder with the same name as the card.
-If no image is found, a default image is used.
+Images must be stored in the data/ folder with the same name as the card. If no image is found, a default image is used. 
+
+DefaultImage.jpeg **SHOULD NOT BE DELETED**, althought it can be replaced
